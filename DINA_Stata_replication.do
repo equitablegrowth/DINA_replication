@@ -4,11 +4,13 @@ local varl r(varlist)
 
 * loop through variables
 foreach var in `varl'{
-	display "---------",`var',"---------"
-
 	* split income equally between spouses and weight
 	egen equal=mean(``var''),by(year id)
 	gen equal_weighted=equal*dweght
+
+* loop through variables
+foreach var in `varl'{
+	display "---------",`var',"---------"
 
 	* loop through all years in the dataset
 	levelsof year, local(years)

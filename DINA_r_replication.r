@@ -1,3 +1,4 @@
+# load necessary libraries/install packages
 library(foreign)
 install.packages("devtools")
 devtools::install_github("hadley/bigvis")
@@ -5,7 +6,7 @@ library(bigvis)
 
 df<-read.csv(file.choose())
 
-# list of vars we want to summarize
+# list of vars to summarize
 vars=c('fiinc','fninc','fainc','flinc','fkinc','ptinc','plinc','pkinc','diinc','princ','peinc','poinc','hweal')
 
 # split income equally between spouses
@@ -35,6 +36,7 @@ for(var in vars){
 		q2total=sum(temp[temp[[varq]]==2,][[varweght]])
 		q3total=sum(temp[temp[[varq]]==3,][[varweght]])
 		total=q1total+q2total+q3total
-		print(paste(y,q1total,q2total,q3total,total,y,q1total/total,q2total/total,q3total/total,sep=','))
+		print('year,bottom50percent,mid40percent,top10percent')
+		print(paste(y,q1total/total,q2total/total,q3total/total,sep=','))
 	}
 }
