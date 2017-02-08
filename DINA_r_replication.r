@@ -7,7 +7,7 @@ library(bigvis)
 df<-read.csv(file.choose())
 
 # list of vars to summarize
-vars=c('fiinc','fninc','fainc','flinc','fkinc','ptinc','plinc','pkinc','diinc','princ','peinc','poinc','hweal')
+vars=c('fninc')
 
 # split income equally between spouses
 for(var in vars){

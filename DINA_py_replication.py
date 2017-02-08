@@ -4,7 +4,7 @@ import pandas as pd
 df=pd.read_csv('/Users/austinclemens/Desktop/ICX15F.csv')
 
 # list of vars to summarize
-vars=['fainc']
+vars=['fninc']
 
 # split income equally between spouses
 for var in vars:

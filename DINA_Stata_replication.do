@@ -1,5 +1,5 @@
 * put the variables you want to analyze here, after ds
-ds fainc
+ds fninc
 local varl r(varlist)
 
 * loop through variables
