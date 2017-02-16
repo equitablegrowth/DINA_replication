@@ -1,10 +1,11 @@
+# load necessary libraries/data
 from __future__ import division
 import pandas as pd
 
-df=pd.read_csv('/Users/austinclemens/Desktop/ICX15F.csv')
+df=pd.read_csv('/path/to/file.csv')
 
 # list of vars to summarize
-vars=['fninc']
+vars=['ptinc']
 
 # split income equally between spouses
 for var in vars:
@@ -35,7 +36,7 @@ def assign_sters(value,sters):
 		return 1
 	return 2
 
-# create columns with decile ranks for each variable within the year
+# create new variables to group observations by category: bottom 50, middle 40, and top 10
 for var in vars:
 	newname=var+'_q'
 	splitname=var+'_split'
@@ -46,7 +47,7 @@ for var in vars:
 		sterdict[year]=sters
 	df[newname]=df.apply(lambda row:assign_sters(row[splitname],sterdict[row['year']]),axis=1)
 
-# now sum income for bottom 50, middle 40, and top 10
+# sum income for each group and present as % of total
 for var in vars:
 	newname=var+'_q'
 	weghtvar=var+'_weght'

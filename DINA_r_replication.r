@@ -1,4 +1,4 @@
-# load necessary libraries/install packages
+# load necessary libraries/data
 library(foreign)
 install.packages("devtools")
 devtools::install_github("hadley/bigvis")
@@ -7,7 +7,7 @@ library(bigvis)
 df<-read.csv(file.choose())
 
 # list of vars to summarize
-vars=c('fninc')
+vars=c('ptinc')
 
 # split income equally between spouses
 for(var in vars){
@@ -25,7 +25,7 @@ for(var in vars){
 	df[[paste(var,'_weght',sep='')]]<-df[[paste(var,'_split',sep='')]]*df$dweght
 }
 
-# print results
+# sum income for each group and present as % of total
 for(var in vars){
 	varweght=paste(var,'_weght',sep='')
 	varq=paste(var,'_q',sep='')
