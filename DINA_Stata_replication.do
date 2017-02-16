@@ -4,9 +4,8 @@ import delimited /path/to/file.csv
 * list of vars to summarize
 local varl "ptinc"
 
-# split income equally between spouses
+* split income equally between spouses
 foreach var in `varl'{
-	* split income equally between spouses and weight
 	egen equal_`var'=mean(`var'),by(year id)
 	gen equal_`var'_weighted=equal_`var'*dweght
 }
